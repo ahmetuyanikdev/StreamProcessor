@@ -10,6 +10,7 @@ public class Runner {
 
     static String path1 = "src/main/resources/single-line";
     static String path2 = "src/main/resources/oie.png";
+    static String path3 = "src/main/resources/iphone62.mp3";
 
     public static void main(String [] args) throws Exception{
         Reader reader = new Reader();
@@ -18,8 +19,5 @@ public class Runner {
 
         System.out.println(output);
 
-        InputStream inputStream1 = new FileInputStream(new File(path1));
-        System.out.println("/////----/////");
-        reader.processNormal(inputStream1);
     }
 }

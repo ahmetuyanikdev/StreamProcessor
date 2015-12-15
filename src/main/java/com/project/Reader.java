@@ -22,7 +22,7 @@ public class Reader {
     public String processInput(InputStream inputStream){
 
         int i;
-        char c;
+        char character;
 
         String fullToken="";
         String token="";
@@ -31,18 +31,19 @@ public class Reader {
         Boolean onlyOneToken=false;
         try {
             while ((i = inputStream.read()) != -1) {
-                c = (char) i;
 
-                if (isWhiteSpace(c)) {
+                character = (char) i;
+
+                if (isWhiteSpace(character)) {
                     token = evaluateToken(token);
                     fullToken+=token;
                     whiteSpaceEnded=true;
                     onlyOneToken=false;
-                    fullToken += c;
+                    fullToken += character;
                     token="";
 
                 } else {
-                    token += c;
+                    token += character;
                     whiteSpaceEnded=false;
                     onlyOneToken=true;
                 }
@@ -52,7 +53,6 @@ public class Reader {
                 token = evaluateToken(token);
                 fullToken+=token;
             }
-
         }
 
         catch (Exception e){
@@ -64,24 +64,6 @@ public class Reader {
         }
     }
 
-    public void processNormal(InputStream inputStream){
-        int i;
-        char c;
-        String token="";
-        try{
-            while ((i = inputStream.read()) != -1) {
-                c = (char) i;
-                token+=c;
-            }
-            System.out.println(token);
-        }
-        catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
-
-
-
     private String evaluateToken(String token) {
         Boolean even;
         if(token.length()>0){
@@ -92,20 +74,16 @@ public class Reader {
         return token;
     }
 
-    public String reverseToken(String word){
+    public String reverseToken(String token){
         String reversed="";
-        for (int i = word.length()-1; i >= 0 ; i--) {
-            reversed+=word.charAt(i);
+        for (int i = token.length()-1; i >= 0 ; i--) {
+            reversed+=token.charAt(i);
         }
         return reversed;
     }
 
     private Boolean isWhiteSpace(char cha){
         return Character.isWhitespace(cha);
-    }
-
-    protected InputStream getInputStreamOfFile(String path) throws IOException{
-        return new FileInputStream(path);
     }
 
     public List<String> getTokens() {

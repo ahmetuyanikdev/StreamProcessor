@@ -11,12 +11,13 @@ public class ReaderTest {
 
     static String path1 = "src/main/resources/single-line";
     static String path2 = "src/main/resources/oie.png";
+    static String path3 = "src/main/resources/iphone62.mp3";
 
 
     @Test
-    public void testOutput() throws IOException{
+    public void testReader() throws IOException{
         Reader reader = new Reader();
-        InputStream inputStream = new FileInputStream(new File(path2));
+        InputStream inputStream = new FileInputStream(new File(path3));
         String output = reader.processInput(inputStream);
         System.out.println(output);
 
