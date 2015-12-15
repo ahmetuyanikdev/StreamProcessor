@@ -10,17 +10,18 @@ import java.io.InputStream;
 public class ReaderTest {
 
     static String path1 = "src/main/resources/single-line";
+    static String path2 = "src/main/resources/oie.png";
+
 
     @Test
     public void testOutput() throws IOException{
         Reader reader = new Reader();
-        InputStream inputStream = new FileInputStream(new File(path1));
+        InputStream inputStream = new FileInputStream(new File(path2));
         String output = reader.processInput(inputStream);
         System.out.println(output);
-        Assert.assertEquals(18,reader.getTokens().size());
-        System.out.println(output.indexOf("have"));
 
         int c=1;
+
         for (int i = 0; i <reader.getTokens().size() ; i++) {
             String token = reader.getTokens().get(i);
             if(c%2==0){
