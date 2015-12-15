@@ -1,4 +1,5 @@
 import com.project.Reader;
+import junit.framework.Assert;
 import org.junit.Test;
 
 import java.io.File;
@@ -15,9 +16,20 @@ public class ReaderTest {
         Reader reader = new Reader();
         InputStream inputStream = new FileInputStream(new File(path1));
         String output = reader.processInput(inputStream);
-
         System.out.println(output);
-        System.out.println("-- token array--");
-        System.out.println(reader.getTokens());
+        Assert.assertEquals(18,reader.getTokens().size());
+        System.out.println(output.indexOf("have"));
+
+        int c=1;
+        for (int i = 0; i <reader.getTokens().size() ; i++) {
+            String token = reader.getTokens().get(i);
+            if(c%2==0){
+                Assert.assertTrue(output.contains(reader.reverseToken(token)));
+            }
+            else{
+                Assert.assertTrue(output.contains(token));
+            }
+            c++;
+        }
     }
 }
