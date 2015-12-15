@@ -12,7 +12,7 @@ public class ReaderTest {
     static String path1 = "src/main/resources/single-line";
 
     @Test
-    public void test() throws IOException{
+    public void testOutput() throws IOException{
         Reader reader = new Reader();
         InputStream inputStream = new FileInputStream(new File(path1));
         String output = reader.processInput(inputStream);
