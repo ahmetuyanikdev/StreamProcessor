@@ -1,2 +1,4 @@
 This is a Challenge App .It reads input from file (etc : text, pdf, mp4..) and processes
-it and gives output.
+it and gives output.Users can test application with files their owns by
+putting them into resources folder and referencing their paths in Runner
+main method.
